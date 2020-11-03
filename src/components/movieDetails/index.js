@@ -1,6 +1,7 @@
 import React from "react";
 import "./movieDetails.css";
 
+
 export default ({ movie }) => {
   return (
     <>
