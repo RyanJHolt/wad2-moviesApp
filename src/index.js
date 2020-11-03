@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import MoviePage from './pages/movieDetailsPage'
 import HomePage from "./pages/homePage";
 
 const sample = {
@@ -87,11 +88,11 @@ const sample = {
 const movies = [sample, sample, sample];
 
 const App = () => {
-  return (
-    <div className="jumbotron">
-      <HomePage movies={movies} />
-    </div>
-  );
-};
+    return (
+      <div className="jumbotron">
+        <MoviePage movie={sample} />
+      </div>
+    );
+  };
 
 ReactDOM.render(<App />, document.getElementById("root"));
