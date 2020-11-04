@@ -13,11 +13,7 @@ const GenresContextProvider = props => {
     }, []);
 
     return (
-        <GenresContext.Provider
-          value={{
-            genres
-          }}
-        >
+        <GenresContext.Provider value={{genres}}>
           {props.children}
         </GenresContext.Provider>    
     )
