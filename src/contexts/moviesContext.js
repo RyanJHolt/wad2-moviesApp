@@ -10,14 +10,20 @@ const reducer = (state, action) => {
                 movies: state.movies.map((m) =>
                     m.id === action.payload.movie.id ? { ...m, favorite: true } : m
                 ),
-                upcoming: [...state.upcoming], popular: [...state.popular], toprated: [...state.toprated],
+                popular: state.popular.map((m) =>
+                    m.id === action.payload.movie.id ? { ...m, favorite: true } : m
+                ),
+                toprated: state.toprated.map((m) =>
+                    m.id === action.payload.movie.id ? { ...m, favorite: true } : m
+                ),
+                upcoming: [...state.upcoming],
             };
-        case "add-Watchlist":
+        case "add-watchlist":
             return {
                 upcoming: state.upcoming.map((w) =>
-                    w.id === action.payload.upcoming.id ? { ...w, watchlist: true } : w
+                    w.id === action.payload.movie.id ? { ...w, watchlist: true } : w
                 ),
-                movies: [...state.movie], popular: [...state.popular], toprated: [...state.toprated],
+                movies: [...state.movies], popular: [...state.popular], toprated: [...state.toprated],
             };
         case "load":
             return { movies: action.payload.movies, upcoming: [...state.upcoming] , popular: [...state.popular], toprated: [...state.toprated] };
@@ -46,7 +52,7 @@ const MoviesContextProvider = (props) => {
 
     const addToFavorites = (movieId) => {
         const index = state.movies.map((m) => m.id).indexOf(movieId);
-        dispatch({ type: "add-favorite", payload: { movie: state.movies[index] } });
+        dispatch({ type: "add-favorite", payload: { movie: state.movies[index], popular: state.movies[index],  toprated: state.toprated[index], } });
     };
 
     const AddToWatchlist = (movieId) => {
